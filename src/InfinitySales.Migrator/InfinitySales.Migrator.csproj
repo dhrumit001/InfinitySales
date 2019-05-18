@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>InfinitySales.Migrator</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>InfinitySales.Migrator</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="appsettings.json;log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\base\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj" />
+    <ProjectReference Include="..\InfinitySales.Core\InfinitySales.Core.csproj" />
+    <ProjectReference Include="..\InfinitySales.EntityFrameworkCore\InfinitySales.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+</Project>

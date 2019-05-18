@@ -1,0 +1,62 @@
+﻿@using Abp.Authorization.Users
+@using Abp.Extensions
+@using Abp.MultiTenancy
+@model InfinitySales.Web.Models.Account.LoginFormViewModel
+@section Styles
+    {
+    <environment names="Development">
+        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.css" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/view-resources/Views/Account/Login.min.css" asp-append-version="true" />
+    </environment>
+}
+@section Scripts
+{
+    <environment names="Development">
+        <script>
+            requirejs(['login'], function () { })
+        </script>
+    </environment>
+}
+<div id="LoginArea" class="card">
+    <div class="body">
+        <form id="LoginForm" asp-action="Login" method="post" data-bind="submit: Submit" novalidate>
+            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+            <input type="hidden" name="ReturnUrlHash" data-bind="value: ReturnUrlHash" />
+            <h4 class="text-center">@L("LogIn")</h4>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="material-icons">person</i>
+                </span>
+                <div class="form-line">
+                    <input type="text" class="form-control" name="UsernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" maxlength="@AbpUserBase.MaxEmailAddressLength" data-bind="value: UsernameOrEmailAddress" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="material-icons">lock</i>
+                </span>
+                <div class="form-line">
+                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" maxlength="@AbpUserBase.MaxPlainPasswordLength" data-bind="value: Password">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 p-t-5">
+                    <input type="checkbox" name="RememberMe" id="RememberMe" class="filled-in chk-col-pink" value="true">
+                    <label for="RememberMe">@L("RememberMe")</label>
+                </div>
+                <div class="col-xs-4">
+                    <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">@L("LogIn")</button>
+                </div>
+            </div>
+
+            <div class="row m-t-15 m-b--20">
+                <div class="col-xs-12">
+                    <a asp-action="Register">@L("Register")</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

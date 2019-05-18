@@ -1,0 +1,103 @@
+﻿@using Abp.Authorization.Users
+<div class="modal fade" id="UserAddEditModal" tabindex="-1" role="dialog" aria-labelledby="UserEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <span data-bind="text: ModalTitle"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="UserAddEditForm" role="form" novalidate class="form-validation">
+                    <input type="hidden" name="Id" data-bind="value: Id" />
+                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li role="presentation" class="active"><a href="#edit-user-details" data-toggle="tab">@L("UserDetails")</a></li>
+                        <li role="presentation"><a href="#edit-user-roles" data-toggle="tab">@L("UserRoles")</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="edit-user-details">
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="email" id="EmailAddress" name="EmailAddress" data-bind="value: EmailAddress,enable:Action() == 'Add'" class="validate form-control">
+                                            <label for="EmailAddress" class="form-label">@L("EmailAddress")</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" id="Name" name="Name" data-bind="value: Name" class="validate form-control">
+                                            <label for="Name" class="form-label">@L("Name")</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input id="Surname" name="Surname" type="text" data-bind="value: Surname" class="validate form-control">
+                                            <label for="Surname" class="form-label">@L("Surname")</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row clearfix" data-bind="hidden : Action() == 'Edit'">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="password" id="Password" name="Password" data-bind="value: Password" class="form-control" maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                                            <label for="Password" class="form-label">@L("Password")</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix" data-bind="hidden : Action() == 'Edit'">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="password" id="ConfirmPassword" name="ConfirmPassword" data-bind="value: ConfirmPassword" class="form-control" maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                                            <label for="ConfirmPassword" class="form-label">@L("ConfirmPassword")</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-float">
+                                        <div class="">
+                                            <input id="IsActive" type="checkbox" name="IsActive" data-bind="checked:IsActive" class="form-control" />
+                                            <label for="IsActive" class="form-label">@L("IsActive")</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane animated fadeIn" id="edit-user-roles">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    
+                                    <div data-bind="foreach: Roles">
+                                        <div class="col-sm-6">
+                                            <input type="checkbox" name="Role" data-bind="value: Name,checked:IsUserRole,attr: {'id': 'role' + Name }" class="filled-in" />
+                                            <label data-bind="attr: { for:'role' + Name },text: DisplayName"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default close-button waves-effect" data-dismiss="modal">@L("Cancel")</button>
+                <button type="button" class="btn btn-primary save-button waves-effect" data-bind="click:Submit">@L("Save")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
