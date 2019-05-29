@@ -1,0 +1,111 @@
+﻿@using InfinitySales.Web.Startup
+@using Abp.MultiTenancy
+@using InfinitySales.MultiTenancy
+@model InfinitySales.Settings.CompanySettings.Dto.CompanyDetailDto
+@{
+    ViewBag.CurrentPageName = PageNames.CompanyDetails; // The menu item will be active for this page.
+}
+@section scripts
+    {
+    <environment names="Development">
+        <script>
+            requirejs(['knockout', 'companySettingIndex'], function (ko, companySettingViewModel) {
+                ko.applyBindings(new companySettingViewModel(@Html.Raw(Json.Serialize(Model))), $("#CompanySetting")[0]);
+            })
+        </script>
+    </environment>
+}
+<div class="row clearfix" id="CompanySetting">
+    <div class="col-xs-12 col-sm-3">
+        <div class="card profile-card">
+            <div class="profile-header">&nbsp;</div>
+            <div class="profile-body">
+                <div class="image-area">
+                    <img src="/images/company.svg" alt="Company Image" />
+                </div>
+                <div class="content-area">
+                    <h3>@Model.Name</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        <div class="card">
+            <div class="body">
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Profile Settings</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="profile_settings" data-bind="with: CompanyDetailViewModel">
+                            <form class="form-horizontal" id="CompanyDetailForm">
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-2 control-label">Company Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="Name" name="Name" data-bind="value: Name" maxlength="@AbpTenantBase.MaxNameLength" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email" class="col-sm-2 control-label">Street</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="Street" name="Street" data-bind="value: Street" maxlength="@TenantDetail.MaxStreetLength">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="City" class="col-sm-2 control-label">City</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="City" name="City" data-bind="value: City" maxlength="@TenantDetail.MaxCityLength">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="State" class="col-sm-2 control-label">State</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="State" name="State" data-bind="value: State" maxlength="@TenantDetail.MaxStateLength">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Country" class="col-sm-2 control-label">Country</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="Country" name="Country" data-bind="value: Country" maxlength="@TenantDetail.MaxCountryLength">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Phone" class="col-sm-2 control-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="Phone" name="Phone" data-bind="value: Phone" maxlength="@TenantDetail.MaxPhoneLength">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Mobile" class="col-sm-2 control-label">Mobile</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" id="Mobile" name="Mobile" data-bind="value: Mobile" maxlength="@TenantDetail.MaxMobileLength">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger" data-bind="click:Submit">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

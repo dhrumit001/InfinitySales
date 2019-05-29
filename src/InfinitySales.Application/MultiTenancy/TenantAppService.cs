@@ -95,6 +95,13 @@ namespace InfinitySales.MultiTenancy
             return MapToEntityDto(tenant);
         }
 
+        public override async Task<TenantDto> Update(TenantDto input)
+        {
+            var tenant = await base.Update(input);
+            
+            return tenant;
+        }
+
         [AbpAllowAnonymous]
         protected override TenantDto MapToEntityDto(Tenant entity)
         {

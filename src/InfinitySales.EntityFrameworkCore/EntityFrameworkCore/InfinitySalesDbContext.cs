@@ -13,6 +13,7 @@ namespace InfinitySales.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
         public virtual DbSet<ApplicationTimeZone> TimeZones { get; set; }
         public virtual DbSet<ApplicationCountry> Contries { get; set; }
+        public virtual DbSet<TenantDetail> TenantDetails { get; set; }
 
         public InfinitySalesDbContext(DbContextOptions<InfinitySalesDbContext> options)
             : base(options)

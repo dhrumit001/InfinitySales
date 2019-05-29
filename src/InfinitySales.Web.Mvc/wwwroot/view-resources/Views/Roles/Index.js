@@ -1,10 +1,8 @@
-﻿define(['knockout'], function (ko) {
+﻿define(['jquery', 'knockout'], function ($, ko) {
 
 	var _roleService = abp.services.app.role;
 	var _$modal = $('#RoleCreateModal');
-	var _$form = _$modal.find('form');
 
-	//addEditRoleModal();
 	$('#RefreshButton').click(function () {
 		refreshRoleList();
 	});

@@ -24,6 +24,24 @@ namespace InfinitySales.MultiTenancy.Dto
         [StringLength(AbpTenantBase.MaxConnectionStringLength)]
         public string ConnectionString { get; set; }
 
-        public bool IsActive {get; set;}
+        [StringLength(TenantDetail.MaxStreetLength)]
+        public string Street { get; set; }
+
+        [StringLength(TenantDetail.MaxCityLength)]
+        public string City { get; set; }
+
+        [StringLength(TenantDetail.MaxStateLength)]
+        public string State { get; set; }
+
+        [StringLength(TenantDetail.MaxCountryLength)]
+        public string Country { get; set; }
+
+        [StringLength(TenantDetail.MaxPhoneLength)]
+        public string Phone { get; set; }
+
+        [StringLength(TenantDetail.MaxMobileLength)]
+        public string Mobile { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

@@ -8,5 +8,6 @@
         public const string Users = "Users";
         public const string Roles = "Roles";
         public const string MySettings = "MySettings";
+        public const string CompanyDetails = "CompanyDetails";
     }
 }
