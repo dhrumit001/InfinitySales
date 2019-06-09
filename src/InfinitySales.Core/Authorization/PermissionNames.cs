@@ -8,5 +8,7 @@
 
         public const string Pages_Roles = "Pages.Roles";
 
+        public const string Pages_UserSettings = "Pages.UserSettings";
+
     }
 }

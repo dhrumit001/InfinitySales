@@ -1,0 +1,62 @@
+﻿@using InfinitySales.Web.Helper.HtmlHelper
+@using Abp.MultiTenancy
+@using Abp.Authorization.Users
+
+@Html.Script(
+@<script>
+    requirejs(['knockout', 'userProfileSettings'], function (ko, userProfileSettingViewModel) {
+     ko.applyBindings(new userProfileSettingViewModel(@Html.Raw(Json.Serialize(Model))), $("#UserProfileSettingsForm")[0]);
+    });
+</script>
+)
+
+
+<form class="form-horizontal" id="UserProfileSettingsForm">
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">Email/UserName</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="text" class="form-control" id="EmailAddress" name="EmailAddress" data-bind="value: EmailAddress" maxlength="@AbpUserBase.MaxEmailAddressLength" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="text" class="form-control" id="Name" name="Name" data-bind="value: Name" maxlength="@AbpUserBase.MaxNameLength">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Email" class="col-sm-2 control-label">Surname</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="text" class="form-control" id="Surname" name="Surname" data-bind="value: Surname" maxlength="@AbpUserBase.MaxSurnameLength" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="City" class="col-sm-2 control-label">Phone</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="number" class="form-control phone-number" id="PhoneNumber" name="PhoneNumber" data-bind="value: PhoneNumber" maxlength="@AbpUserBase.MaxPhoneNumberLength" placeholder="Ex: +00 (000) 000-00-00">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="CultureName" class="col-sm-2 control-label">Language and Culture</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <select class="form-control" id="CultureName" name="CultureName"  data-bind="options: AvailableLanguages,optionsText: 'DisplayName',optionsValue: 'Name',value: CultureName"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-danger" data-bind="click:Submit">SUBMIT</button>
+        </div>
+    </div>
+</form>

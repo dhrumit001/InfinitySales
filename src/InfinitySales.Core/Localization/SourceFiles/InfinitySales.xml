@@ -94,5 +94,7 @@
     <text name="StartTyping">Start Typing</text>
     <text name="Skins">Skins</text>
     <text name="Settings">Settings</text>
+    <text name="MySettings">My Settings</text>
+    <text name="UserSettings">User Settings</text>
   </texts>
 </localizationDictionary>

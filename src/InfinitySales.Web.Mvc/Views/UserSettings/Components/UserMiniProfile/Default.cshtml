@@ -1,0 +1,14 @@
+@model InfinitySales.Settings.UserSettings.Dto.GetUserMiniProfileOutput
+
+<div class="card profile-card">
+    <div class="profile-header">&nbsp;</div>
+    <div class="profile-body">
+        <div class="image-area">
+            <img src="~/images/user.png" alt="UserProfileImage">
+        </div>
+        <div class="content-area">
+            <h3>@Model.FullName</h3>
+            <p>@Model.GetRoleNamesString()</p>
+        </div>
+    </div>
+</div>

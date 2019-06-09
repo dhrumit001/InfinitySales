@@ -1,0 +1,30 @@
+﻿@using InfinitySales.Web.Startup
+@using InfinitySales.Web.Views.UserSettings.Components.UserMiniProfile
+@using InfinitySales.Web.Views.UserSettings.Components.UserProfileSettings
+
+@{
+    ViewBag.CurrentPageName = PageNames.CompanyDetails; // The menu item will be active for this page.
+}
+
+<div class="row clearfix" id="UserSetting">
+    <div class="col-xs-12 col-sm-3">
+        @await Component.InvokeAsync(typeof(UserMiniProfileViewComponent))
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        <div class="card">
+            <div class="body">
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Profile Settings</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="profile_settings" data-bind="with: CompanyDetailViewModel">
+                            @await Component.InvokeAsync(typeof(UserProfileSettingsViewComponent))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

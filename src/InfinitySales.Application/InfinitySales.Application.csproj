@@ -19,7 +19,4 @@
   <ItemGroup>
     <ProjectReference Include="..\InfinitySales.Core\InfinitySales.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PersonalSettings\Dto\" />
-  </ItemGroup>
 </Project>

@@ -926,8 +926,6 @@ namespace InfinitySales.Migrations
 
                     b.Property<bool>("IsTwoFactorEnabled");
 
-                    b.Property<int>("LanguageId");
-
                     b.Property<DateTime?>("LastLoginTime");
 
                     b.Property<DateTime?>("LastModificationTime");

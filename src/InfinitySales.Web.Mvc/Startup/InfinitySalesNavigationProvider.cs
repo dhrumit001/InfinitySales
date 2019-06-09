@@ -53,8 +53,9 @@ namespace InfinitySales.Web.Startup
                         new MenuItemDefinition(
                         PageNames.MySettings,
                         L("MySettings"),
-                        url: "MySettings",
-                        icon: "local_offer"
+                        url: "UserSettings",
+                        icon: "local_offer",
+                        requiredPermissionName: PermissionNames.Pages_UserSettings
                     )
                   )
               );

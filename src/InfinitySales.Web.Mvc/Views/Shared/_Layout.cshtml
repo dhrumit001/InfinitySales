@@ -10,6 +10,7 @@
 @using InfinitySales.Web.Views.Shared.Components.SideBarUserArea
 @using InfinitySales.Web.Views.Shared.Components.TopBarLanguageSwitch
 @using InfinitySales.Web.Views.Shared.Components.RightSideBar
+@using  InfinitySales.Web.Helper.HtmlHelper
 @inject InfinitySales.Timing.AppTimes AppTimes
 @inject IAbpAntiForgeryManager AbpAntiForgeryManager
 @inject IMultiTenancyConfig MultiTenancyConfig
@@ -178,5 +179,6 @@
     @WebResourceManager.RenderScripts()
     <!-- View specific scripts -->
     @RenderSection("scripts", required: false)
+    @Html.RenderPartialViewScripts()
 </body>
 </html>

@@ -103,11 +103,6 @@ namespace Abp.Authorization.Users
         public virtual int? TenantId { get; set; }
 
         /// <summary>
-        /// Language Id of this user.
-        /// </summary>
-        public virtual int LanguageId { get; set; }
-
-        /// <summary>
         /// Email address of the user.
         /// Email address must be unique for it's tenant.
         /// </summary>

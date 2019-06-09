@@ -31,16 +31,5 @@ namespace InfinitySales.Web.Controllers
             return View(model);
         }
 
-        //public async Task<ActionResult> EditUserModal(long userId)
-        //{
-        //    var user = await _userAppService.Get(new EntityDto<long>(userId));
-        //    var roles = (await _userAppService.GetRoles()).Items;
-        //    var model = new EditUserModalViewModel
-        //    {
-        //        User = user,
-        //        Roles = roles
-        //    };
-        //    return View("_EditUserModal", model);
-        //}
     }
 }
