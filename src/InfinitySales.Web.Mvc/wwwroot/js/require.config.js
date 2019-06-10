@@ -52,6 +52,7 @@ requirejs.config({
 		addEditUserModel: '/view-resources/Views/Users/_AddEditUserModal',
 		companySettingIndex: '/view-resources/Views/CompanySettings/Index',
 		userProfileSettings: '/view-resources/Views/UserSettings/Components/UserProfileSettings/Default',
+		changePassword: '/view-resources/Views/UserSettings/Components/ChangePassword/Default',
 		login: '/view-resources/Views/Account/Login',
 		register: '/view-resources/Views/Account/Register',
 		layout: '/view-resources/Views/Shared/_Layout'

@@ -1,0 +1,46 @@
+@using InfinitySales.Web.Helper.HtmlHelper
+@using Abp.MultiTenancy
+@using Abp.Authorization.Users
+
+@Html.Script(
+@<script>
+    requirejs(['knockout', 'changePassword'], function (ko, changePasswordViewModel) {
+        ko.applyBindings(new changePasswordViewModel(), $("#ChangePasswordForm")[0]);
+    });
+</script>
+)
+
+
+<form class="form-horizontal" id="ChangePasswordForm">
+    <div class="form-group">
+        <label for="CurrentPassword" class="col-sm-2 control-label">Current Password</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="password" class="form-control" id="CurrentPassword" name="CurrentPassword" data-bind="value: CurrentPassword" maxlength="@AbpUserBase.MaxPasswordLength">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="NewPassword" class="col-sm-2 control-label">New Password</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="password" class="form-control" id="NewPassword" name="NewPassword" data-bind="value: NewPassword" maxlength="@AbpUserBase.MaxPasswordLength">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword" class="col-sm-2 control-label">Re-enter Password</label>
+        <div class="col-sm-10">
+            <div class="form-line">
+                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" data-bind="value: ConfirmPassword" maxlength="@AbpUserBase.MaxPasswordLength">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-danger" data-bind="click:Submit">SUBMIT</button>
+        </div>
+    </div>
+</form>

@@ -1,9 +1,11 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.Domain.Uow;
 using Abp.Localization;
 using Abp.Runtime.Session;
+using Abp.UI;
 using InfinitySales.Authorization;
 using InfinitySales.Authorization.Roles;
 using InfinitySales.Authorization.Users;
@@ -66,6 +68,18 @@ namespace InfinitySales.Settings.UserSettings
                 LocalizationSettingNames.DefaultLanguage,
                 input.CultureName
             );
+
+        }
+
+        public async Task ChangePassword(ChangePasswordDto input)
+        {
+            var user = await GetCurrentUserAsync();
+
+            if (!await _userManager.CheckPasswordAsync(user, input.CurrentPassword))
+                throw new UserFriendlyException("InvalidPassword", "Current password is not valid.");
+
+            CheckErrors(await _userManager.ChangePasswordAsync(user, input.NewPassword));
+
 
         }
     }

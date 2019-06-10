@@ -53,7 +53,7 @@
 		}
 
 		function createPermissionArray(permissions, grantedPermissions) {
-			debugger
+			
 			var permissionModelArray = [];
 			$.each(permissions, function (index, element) {
 				permissionModelArray.push(new permissionViewModel({ Name: element.name, DisplayName: element.displayName, IsGranted: $.inArray(element.name, grantedPermissions) !== -1 }));

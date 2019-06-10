@@ -16,10 +16,14 @@
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Profile Settings</a></li>
+                        <li role="presentation"><a href="#change_password" aria-controls="settings" role="tab" data-toggle="tab">Change Password</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="profile_settings" data-bind="with: CompanyDetailViewModel">
+                        <div role="tabpanel" class="tab-pane fade in active" id="profile_settings">
                             @await Component.InvokeAsync(typeof(UserProfileSettingsViewComponent))
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade in" id="change_password">
+                            @await Component.InvokeAsync(typeof(ChangePasswordViewComponent))
                         </div>
                     </div>
                 </div>
