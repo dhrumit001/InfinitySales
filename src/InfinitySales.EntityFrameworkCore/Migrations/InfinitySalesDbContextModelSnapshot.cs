@@ -1090,7 +1090,7 @@ namespace InfinitySales.Migrations
                         .IsRequired()
                         .HasMaxLength(128);
 
-                    b.Property<long>("PrimaryUserId1");
+                    b.Property<long>("PrimaryUserId");
 
                     b.Property<string>("TenancyName")
                         .IsRequired()
@@ -1106,7 +1106,7 @@ namespace InfinitySales.Migrations
 
                     b.HasIndex("LastModifierUserId");
 
-                    b.HasIndex("PrimaryUserId1");
+                    b.HasIndex("PrimaryUserId");
 
                     b.HasIndex("TenancyName");
 
@@ -1313,7 +1313,7 @@ namespace InfinitySales.Migrations
 
                     b.HasOne("InfinitySales.Authorization.Users.User", "PrimaryUser")
                         .WithMany()
-                        .HasForeignKey("PrimaryUserId1")
+                        .HasForeignKey("PrimaryUserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

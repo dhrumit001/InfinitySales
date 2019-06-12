@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitySales.Migrations
 {
     [DbContext(typeof(InfinitySalesDbContext))]
-    [Migration("20190612062706_Initial_Migration")]
+    [Migration("20190612063458_Initial_Migration")]
     partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1092,7 +1092,7 @@ namespace InfinitySales.Migrations
                         .IsRequired()
                         .HasMaxLength(128);
 
-                    b.Property<long>("PrimaryUserId1");
+                    b.Property<long>("PrimaryUserId");
 
                     b.Property<string>("TenancyName")
                         .IsRequired()
@@ -1108,7 +1108,7 @@ namespace InfinitySales.Migrations
 
                     b.HasIndex("LastModifierUserId");
 
-                    b.HasIndex("PrimaryUserId1");
+                    b.HasIndex("PrimaryUserId");
 
                     b.HasIndex("TenancyName");
 
@@ -1315,7 +1315,7 @@ namespace InfinitySales.Migrations
 
                     b.HasOne("InfinitySales.Authorization.Users.User", "PrimaryUser")
                         .WithMany()
-                        .HasForeignKey("PrimaryUserId1")
+                        .HasForeignKey("PrimaryUserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

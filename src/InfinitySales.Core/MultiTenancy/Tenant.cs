@@ -13,12 +13,12 @@ namespace InfinitySales.MultiTenancy
         public Tenant(string tenancyName, string name, long primaryUserId)
             : base(tenancyName, name)
         {
-            PrimaryUserId1 = primaryUserId;
+            PrimaryUserId = primaryUserId;
         }
 
-        public virtual long PrimaryUserId1 { get; set; }
+        public virtual long PrimaryUserId { get; set; }
 
-        [ForeignKey("PrimaryUserId1")]
+        [ForeignKey("PrimaryUserId")]
         public virtual User PrimaryUser { get; set; }
 
     }

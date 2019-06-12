@@ -578,7 +578,7 @@ namespace InfinitySales.Migrations
                     ConnectionString = table.Column<string>(maxLength: 1024, nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     EditionId = table.Column<int>(nullable: true),
-                    PrimaryUserId1 = table.Column<long>(nullable: false)
+                    PrimaryUserId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -608,8 +608,8 @@ namespace InfinitySales.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_AbpTenants_AbpUsers_PrimaryUserId1",
-                        column: x => x.PrimaryUserId1,
+                        name: "FK_AbpTenants_AbpUsers_PrimaryUserId",
+                        column: x => x.PrimaryUserId,
                         principalTable: "AbpUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -959,9 +959,9 @@ namespace InfinitySales.Migrations
                 column: "LastModifierUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpTenants_PrimaryUserId1",
+                name: "IX_AbpTenants_PrimaryUserId",
                 table: "AbpTenants",
-                column: "PrimaryUserId1");
+                column: "PrimaryUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpTenants_TenancyName",
