@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfinitySales.Migrations
 {
     [DbContext(typeof(InfinitySalesDbContext))]
-    [Migration("20190325064827_Initial_Migration")]
+    [Migration("20190612062706_Initial_Migration")]
     partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -310,7 +310,7 @@ namespace InfinitySales.Migrations
                     b.Property<byte>("Result");
 
                     b.Property<string>("TenancyName")
-                        .HasMaxLength(64);
+                        .HasMaxLength(256);
 
                     b.Property<int?>("TenantId");
 
@@ -928,8 +928,6 @@ namespace InfinitySales.Migrations
 
                     b.Property<bool>("IsTwoFactorEnabled");
 
-                    b.Property<int>("LanguageId");
-
                     b.Property<DateTime?>("LastLoginTime");
 
                     b.Property<DateTime?>("LastModificationTime");
@@ -1094,9 +1092,11 @@ namespace InfinitySales.Migrations
                         .IsRequired()
                         .HasMaxLength(128);
 
+                    b.Property<long>("PrimaryUserId1");
+
                     b.Property<string>("TenancyName")
                         .IsRequired()
-                        .HasMaxLength(64);
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 
@@ -1108,9 +1108,41 @@ namespace InfinitySales.Migrations
 
                     b.HasIndex("LastModifierUserId");
 
+                    b.HasIndex("PrimaryUserId1");
+
                     b.HasIndex("TenancyName");
 
                     b.ToTable("AbpTenants");
+                });
+
+            modelBuilder.Entity("InfinitySales.MultiTenancy.TenantDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Mobile")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("State")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Street")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TenantDetails");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1280,6 +1312,11 @@ namespace InfinitySales.Migrations
                     b.HasOne("InfinitySales.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+
+                    b.HasOne("InfinitySales.Authorization.Users.User", "PrimaryUser")
+                        .WithMany()
+                        .HasForeignKey("PrimaryUserId1")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

@@ -24,9 +24,10 @@ namespace InfinitySales.EntityFrameworkCore.Seed
             // Host seed
             new InitialHostDbBuilder(context).Create();
 
+            // Comment Temporary beacuse update code based to primaryuser of tenant
             // Default tenant seed (in host database).
-            new DefaultTenantBuilder(context).Create();
-            new TenantRoleAndUserBuilder(context, 1).Create();
+            //new DefaultTenantBuilder(context).Create();
+            //new TenantRoleAndUserBuilder(context, 1).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

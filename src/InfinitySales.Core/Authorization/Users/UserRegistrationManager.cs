@@ -51,7 +51,23 @@ namespace InfinitySales.Authorization.Users
                 CheckErrors(await _userManager.CheckDuplicateUsernameOrEmailAddressAsync(null, emailAddress, emailAddress));
             }
 
-            var tenant = new Tenant(userName, tenancyName);
+            //create user
+            var user = new User
+            {
+                Name = name,
+                Surname = surname,
+                EmailAddress = emailAddress,
+                IsActive = true,
+                UserName = userName,
+                IsEmailConfirmed = isEmailConfirmed,
+                Roles = new List<UserRole>()
+            };
+            user.SetNormalizedNames();
+            CheckErrors(await _userManager.CreateAsync(user, plainPassword));
+            await CurrentUnitOfWork.SaveChangesAsync(); // To get admin user's id
+
+            //create tenant with primary user
+            var tenant = new Tenant(userName, tenancyName, user.Id);
             var defaultEdition = await _editionManager.FindByNameAsync(EditionManager.DefaultEditionName);
             if (defaultEdition != null)
             {
@@ -67,6 +83,7 @@ namespace InfinitySales.Authorization.Users
             // We are working entities of new tenant, so changing tenant filter
             using (CurrentUnitOfWork.SetTenantId(tenant.Id))
             {
+                user.TenantId = tenant.Id;
                 // Create static roles for new tenant
                 CheckErrors(await _roleManager.CreateStaticRoles(tenant.Id));
 
@@ -76,23 +93,8 @@ namespace InfinitySales.Authorization.Users
                 var adminRole = _roleManager.Roles.Single(r => r.Name == StaticRoleNames.Tenants.Admin);
                 await _roleManager.GrantAllPermissionsAsync(adminRole);
 
-                // Create admin user for the tenant
-                var user = new User
-                {
-                    TenantId = tenant.Id,
-                    Name = name,
-                    Surname = surname,
-                    EmailAddress = emailAddress,
-                    IsActive = true,
-                    UserName = userName,
-                    IsEmailConfirmed = isEmailConfirmed,
-                    Roles = new List<UserRole>()
-                };
-                user.SetNormalizedNames();
                 await _userManager.InitializeOptionsAsync(tenant.Id);
-                CheckErrors(await _userManager.CreateAsync(user, plainPassword));
-                await CurrentUnitOfWork.SaveChangesAsync(); // To get admin user's id
-
+                CheckErrors(await _userManager.UpdateAsync(user));
 
                 // Assign admin user to role!
                 CheckErrors(await _userManager.AddToRoleAsync(user, adminRole.Name));

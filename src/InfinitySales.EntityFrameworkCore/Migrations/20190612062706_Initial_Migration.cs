@@ -314,7 +314,7 @@ namespace InfinitySales.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TenantId = table.Column<int>(nullable: true),
-                    TenancyName = table.Column<string>(maxLength: 64, nullable: true),
+                    TenancyName = table.Column<string>(maxLength: 256, nullable: true),
                     UserId = table.Column<long>(nullable: true),
                     UserNameOrEmailAddress = table.Column<string>(maxLength: 255, nullable: true),
                     ClientIpAddress = table.Column<string>(maxLength: 64, nullable: true),
@@ -378,7 +378,6 @@ namespace InfinitySales.Migrations
                     AuthenticationSource = table.Column<string>(maxLength: 64, nullable: true),
                     UserName = table.Column<string>(maxLength: 256, nullable: false),
                     TenantId = table.Column<int>(nullable: true),
-                    LanguageId = table.Column<int>(nullable: false),
                     EmailAddress = table.Column<string>(maxLength: 256, nullable: false),
                     Name = table.Column<string>(maxLength: 64, nullable: false),
                     Surname = table.Column<string>(maxLength: 64, nullable: false),
@@ -420,6 +419,25 @@ namespace InfinitySales.Migrations
                         principalTable: "AbpUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TenantDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    TenantId = table.Column<int>(nullable: false),
+                    Street = table.Column<string>(maxLength: 50, nullable: true),
+                    City = table.Column<string>(maxLength: 50, nullable: true),
+                    State = table.Column<string>(maxLength: 50, nullable: true),
+                    Country = table.Column<string>(maxLength: 50, nullable: true),
+                    Phone = table.Column<string>(maxLength: 15, nullable: true),
+                    Mobile = table.Column<string>(maxLength: 15, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TenantDetails", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -555,11 +573,12 @@ namespace InfinitySales.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeleterUserId = table.Column<long>(nullable: true),
                     DeletionTime = table.Column<DateTime>(nullable: true),
-                    TenancyName = table.Column<string>(maxLength: 64, nullable: false),
+                    TenancyName = table.Column<string>(maxLength: 256, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
                     ConnectionString = table.Column<string>(maxLength: 1024, nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
-                    EditionId = table.Column<int>(nullable: true)
+                    EditionId = table.Column<int>(nullable: true),
+                    PrimaryUserId1 = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -588,6 +607,12 @@ namespace InfinitySales.Migrations
                         principalTable: "AbpUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AbpTenants_AbpUsers_PrimaryUserId1",
+                        column: x => x.PrimaryUserId1,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -934,6 +959,11 @@ namespace InfinitySales.Migrations
                 column: "LastModifierUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AbpTenants_PrimaryUserId1",
+                table: "AbpTenants",
+                column: "PrimaryUserId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AbpTenants_TenancyName",
                 table: "AbpTenants",
                 column: "TenancyName");
@@ -1137,6 +1167,9 @@ namespace InfinitySales.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "TenantDetails");
 
             migrationBuilder.DropTable(
                 name: "AbpEntityChanges");

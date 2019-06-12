@@ -1090,6 +1090,8 @@ namespace InfinitySales.Migrations
                         .IsRequired()
                         .HasMaxLength(128);
 
+                    b.Property<long>("PrimaryUserId1");
+
                     b.Property<string>("TenancyName")
                         .IsRequired()
                         .HasMaxLength(256);
@@ -1103,6 +1105,8 @@ namespace InfinitySales.Migrations
                     b.HasIndex("EditionId");
 
                     b.HasIndex("LastModifierUserId");
+
+                    b.HasIndex("PrimaryUserId1");
 
                     b.HasIndex("TenancyName");
 
@@ -1306,6 +1310,11 @@ namespace InfinitySales.Migrations
                     b.HasOne("InfinitySales.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+
+                    b.HasOne("InfinitySales.Authorization.Users.User", "PrimaryUser")
+                        .WithMany()
+                        .HasForeignKey("PrimaryUserId1")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
