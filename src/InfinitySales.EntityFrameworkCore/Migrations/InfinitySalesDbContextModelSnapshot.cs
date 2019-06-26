@@ -1140,6 +1140,9 @@ namespace InfinitySales.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TenantId")
+                        .IsUnique();
+
                     b.ToTable("TenantDetails");
                 });
 
@@ -1314,6 +1317,14 @@ namespace InfinitySales.Migrations
                     b.HasOne("InfinitySales.Authorization.Users.User", "PrimaryUser")
                         .WithMany()
                         .HasForeignKey("PrimaryUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("InfinitySales.MultiTenancy.TenantDetail", b =>
+                {
+                    b.HasOne("InfinitySales.MultiTenancy.Tenant", "Tenant")
+                        .WithOne("TenantDetail")
+                        .HasForeignKey("InfinitySales.MultiTenancy.TenantDetail", "TenantId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

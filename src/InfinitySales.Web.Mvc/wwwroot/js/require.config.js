@@ -50,7 +50,7 @@ requirejs.config({
 		addEditRoleModel: '/view-resources/Views/Roles/_AddEditRoleModal',
 		userIndex: '/view-resources/Views/Users/Index',
 		addEditUserModel: '/view-resources/Views/Users/_AddEditUserModal',
-		companySettingIndex: '/view-resources/Views/CompanySettings/Index',
+		tenantSettingsIndex: '/view-resources/Views/TenantSettings/Index',
 		userProfileSettings: '/view-resources/Views/UserSettings/Components/UserProfileSettings/Default',
 		changePassword: '/view-resources/Views/UserSettings/Components/ChangePassword/Default',
 		login: '/view-resources/Views/Account/Login',

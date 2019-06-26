@@ -21,5 +21,7 @@ namespace InfinitySales.MultiTenancy
         [ForeignKey("PrimaryUserId")]
         public virtual User PrimaryUser { get; set; }
 
+        public virtual TenantDetail TenantDetail { get; set; }
+
     }
 }

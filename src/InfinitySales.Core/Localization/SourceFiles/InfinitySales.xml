@@ -13,6 +13,7 @@
     <text name="UserEmailIsNotConfirmedAndCanNotLogin">Your email address is not confirmed. You can not login.</text>
     <text name="UserLockedOutMessage">The user account has been locked out. Please try again later.</text>
     <text name="PleaseEnterLoginInformation" value="Please enter login information" />
+    <text name="CanNotDeletePrimaryUser" value="Can not delete a primary user: {0}" />
     <text name="TenancyName" value="Tenancy name" />
     <text name="UserNameOrEmail" value="User name or email" />
     <text name="Password" value="Password" />
@@ -96,5 +97,6 @@
     <text name="Settings">Settings</text>
     <text name="MySettings">My Settings</text>
     <text name="UserSettings">User Settings</text>
+    <text name="TenantSettings">Tenant Settings</text>
   </texts>
 </localizationDictionary>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace InfinitySales.MultiTenancy
@@ -16,7 +17,7 @@ namespace InfinitySales.MultiTenancy
         public const int MaxMobileLength = 15;
 
         public int TenantId { get; set; }
-
+        
         [StringLength(MaxStreetLength)]
         public string Street { get; set; }
 
@@ -34,5 +35,8 @@ namespace InfinitySales.MultiTenancy
 
         [StringLength(MaxMobileLength)]
         public string Mobile { get; set; }
+
+        [ForeignKey("TenantId")]
+        public virtual Tenant Tenant { get; protected set; }
     }
 }

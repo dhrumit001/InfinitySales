@@ -57,6 +57,14 @@ namespace InfinitySales.Web.Startup
                         icon: "local_offer",
                         requiredPermissionName: PermissionNames.Pages_UserSettings
                     )
+                  ).AddItem(
+                        new MenuItemDefinition(
+                        PageNames.TenantSettings,
+                        L("TenantSettings"),
+                        url: "TenantSettings",
+                        icon: "local_offer",
+                        requiredPermissionName: PermissionNames.Pages_TenantSettings
+                    )
                   )
               );
         }

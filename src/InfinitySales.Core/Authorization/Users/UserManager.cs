@@ -12,11 +12,17 @@ using Abp.Organizations;
 using Abp.Runtime.Caching;
 using InfinitySales.Authorization.Roles;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using InfinitySales.MultiTenancy;
+using Abp.UI;
+using Abp.Localization;
 
 namespace InfinitySales.Authorization.Users
 {
     public class UserManager : AbpUserManager<Role, User>
     {
+        private TenantManager _tenantManager;
+
         public UserManager(
     RoleManager roleManager,
     UserStore store,
@@ -35,7 +41,8 @@ namespace InfinitySales.Authorization.Users
     IRepository<UserOrganizationUnit, long> userOrganizationUnitRepository,
     IOrganizationUnitSettings organizationUnitSettings,
     ISettingManager settingManager,
-    IRepository<User, long> userRepository)
+    IRepository<User, long> userRepository,
+    TenantManager tenantManager)
     : base(
         roleManager,
         store,
@@ -54,7 +61,29 @@ namespace InfinitySales.Authorization.Users
         userOrganizationUnitRepository,
         organizationUnitSettings,
         settingManager)
-        { }
+        {
+            _tenantManager = tenantManager;
+        }
+
+
+        public override async Task<IdentityResult> DeleteAsync(User user)
+        {
+            if (user.TenantId.HasValue)
+            {
+                if (await IsUserIsPrimaryUserAsync(user.TenantId.Value, user.Id))
+                {
+                    throw new UserFriendlyException(string.Format(L("CanNotDeletePrimaryUser"), user.UserName));
+                }
+            }
+            return await base.DeleteAsync(user);
+        }
+
+        public async Task<bool> IsUserIsPrimaryUserAsync(int tenantId, long userId)
+        {
+            var tenant = await _tenantManager.GetByIdAsync(tenantId);
+            return userId == tenant.PrimaryUserId;
+
+        }
 
     }
 

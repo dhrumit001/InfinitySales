@@ -32,7 +32,6 @@ namespace InfinitySales.MultiTenancy
 
         public async override Task CreateAsync(Tenant tenant)
         {
-
             await ValidateTenantAsync(tenant);
             await TenantRepository.InsertAsync(tenant);
         }

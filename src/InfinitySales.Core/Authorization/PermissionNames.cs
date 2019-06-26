@@ -10,5 +10,7 @@
 
         public const string Pages_UserSettings = "Pages.UserSettings";
 
+        public const string Pages_TenantSettings = "Pages.CompanySettings";
+
     }
 }
