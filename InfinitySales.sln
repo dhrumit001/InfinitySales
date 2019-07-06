@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}"
 EndProject
@@ -48,6 +48,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Web.Common", "base\Abp.Web.Common\Abp.Web.Common.csproj", "{BCA43974-659F-45C6-B539-73EA5B63F9D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.AspNetCore.SignalR", "base\Abp.AspNetCore.SignalR\Abp.AspNetCore.SignalR.csproj", "{67B8FEDC-14A6-4C14-927A-4913052E19FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C1FF285C-8342-4DCD-8EAF-01D91D1641E2}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Dhrumit\Downloads\DevExtreme.AspNet.Data-master (1)\DevExtreme.AspNet.Data-master\bower.json = C:\Users\Dhrumit\Downloads\DevExtreme.AspNet.Data-master (1)\DevExtreme.AspNet.Data-master\bower.json
+		C:\Users\Dhrumit\Downloads\DevExtreme.AspNet.Data-master (1)\DevExtreme.AspNet.Data-master\js\dx.aspnet.data.js = C:\Users\Dhrumit\Downloads\DevExtreme.AspNet.Data-master (1)\DevExtreme.AspNet.Data-master\js\dx.aspnet.data.js
+		C:\Users\Dhrumit\Downloads\DevExtreme.AspNet.Data-master (1)\DevExtreme.AspNet.Data-master\js-test\test.js = C:\Users\Dhrumit\Downloads\DevExtreme.AspNet.Data-master (1)\DevExtreme.AspNet.Data-master\js-test\test.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -160,94 +167,9 @@ Global
 		{C0519A22-F88E-4ECB-A460-AC48D89B10E1} = {1B4E6C10-6698-45F8-9AAF-18921368CBE2}
 		{BCA43974-659F-45C6-B539-73EA5B63F9D1} = {1B4E6C10-6698-45F8-9AAF-18921368CBE2}
 		{67B8FEDC-14A6-4C14-927A-4913052E19FA} = {1B4E6C10-6698-45F8-9AAF-18921368CBE2}
+		{C1FF285C-8342-4DCD-8EAF-01D91D1641E2} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79F2FC2A-4C2B-48D6-9B46-97D2CCB367D6}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 21
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://infinitysales.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = src\\InfinitySales.Application\\InfinitySales.Application.csproj
-		SccProjectTopLevelParentUniqueName1 = InfinitySales.sln
-		SccProjectName1 = src/InfinitySales.Application
-		SccLocalPath1 = src\\InfinitySales.Application
-		SccProjectUniqueName2 = test\\InfinitySales.Tests\\InfinitySales.Tests.csproj
-		SccProjectTopLevelParentUniqueName2 = InfinitySales.sln
-		SccProjectName2 = test/InfinitySales.Tests
-		SccLocalPath2 = test\\InfinitySales.Tests
-		SccProjectUniqueName3 = src\\InfinitySales.Core\\InfinitySales.Core.csproj
-		SccProjectTopLevelParentUniqueName3 = InfinitySales.sln
-		SccProjectName3 = src/InfinitySales.Core
-		SccLocalPath3 = src\\InfinitySales.Core
-		SccProjectUniqueName4 = src\\InfinitySales.Migrator\\InfinitySales.Migrator.csproj
-		SccProjectTopLevelParentUniqueName4 = InfinitySales.sln
-		SccProjectName4 = src/InfinitySales.Migrator
-		SccLocalPath4 = src\\InfinitySales.Migrator
-		SccProjectUniqueName5 = src\\InfinitySales.Web.Host\\InfinitySales.Web.Host.csproj
-		SccProjectTopLevelParentUniqueName5 = InfinitySales.sln
-		SccProjectName5 = src/InfinitySales.Web.Host
-		SccLocalPath5 = src\\InfinitySales.Web.Host
-		SccProjectUniqueName6 = src\\InfinitySales.Web.Core\\InfinitySales.Web.Core.csproj
-		SccProjectTopLevelParentUniqueName6 = InfinitySales.sln
-		SccProjectName6 = src/InfinitySales.Web.Core
-		SccLocalPath6 = src\\InfinitySales.Web.Core
-		SccProjectUniqueName7 = src\\InfinitySales.Web.Mvc\\InfinitySales.Web.Mvc.csproj
-		SccProjectTopLevelParentUniqueName7 = InfinitySales.sln
-		SccProjectName7 = src/InfinitySales.Web.Mvc
-		SccLocalPath7 = src\\InfinitySales.Web.Mvc
-		SccProjectUniqueName8 = src\\InfinitySales.EntityFrameworkCore\\InfinitySales.EntityFrameworkCore.csproj
-		SccProjectTopLevelParentUniqueName8 = InfinitySales.sln
-		SccProjectName8 = src/InfinitySales.EntityFrameworkCore
-		SccLocalPath8 = src\\InfinitySales.EntityFrameworkCore
-		SccProjectUniqueName9 = base\\Abp.AutoMapper\\Abp.AutoMapper.csproj
-		SccProjectTopLevelParentUniqueName9 = InfinitySales.sln
-		SccProjectName9 = base/Abp.AutoMapper
-		SccLocalPath9 = base\\Abp.AutoMapper
-		SccProjectUniqueName10 = base\\Abp\\Abp.csproj
-		SccProjectTopLevelParentUniqueName10 = InfinitySales.sln
-		SccProjectName10 = base/Abp
-		SccLocalPath10 = base\\Abp
-		SccProjectUniqueName11 = base\\Abp.MailKit\\Abp.MailKit.csproj
-		SccProjectTopLevelParentUniqueName11 = InfinitySales.sln
-		SccProjectName11 = base/Abp.MailKit
-		SccLocalPath11 = base\\Abp.MailKit
-		SccProjectUniqueName12 = base\\Abp.ZeroCore.EntityFrameworkCore\\Abp.ZeroCore.EntityFrameworkCore.csproj
-		SccProjectTopLevelParentUniqueName12 = InfinitySales.sln
-		SccProjectName12 = base/Abp.ZeroCore.EntityFrameworkCore
-		SccLocalPath12 = base\\Abp.ZeroCore.EntityFrameworkCore
-		SccProjectUniqueName13 = base\\Abp.EntityFramework.Common\\Abp.EntityFramework.Common.csproj
-		SccProjectTopLevelParentUniqueName13 = InfinitySales.sln
-		SccProjectName13 = base/Abp.EntityFramework.Common
-		SccLocalPath13 = base\\Abp.EntityFramework.Common
-		SccProjectUniqueName14 = base\\Abp.Zero.Common\\Abp.Zero.Common.csproj
-		SccProjectTopLevelParentUniqueName14 = InfinitySales.sln
-		SccProjectName14 = base/Abp.Zero.Common
-		SccLocalPath14 = base\\Abp.Zero.Common
-		SccProjectUniqueName15 = base\\Abp.ZeroCore\\Abp.ZeroCore.csproj
-		SccProjectTopLevelParentUniqueName15 = InfinitySales.sln
-		SccProjectName15 = base/Abp.ZeroCore
-		SccLocalPath15 = base\\Abp.ZeroCore
-		SccProjectUniqueName16 = base\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj
-		SccProjectTopLevelParentUniqueName16 = InfinitySales.sln
-		SccProjectName16 = base/Abp.EntityFrameworkCore
-		SccLocalPath16 = base\\Abp.EntityFrameworkCore
-		SccProjectUniqueName17 = base\\Abp.Castle.Log4Net\\Abp.Castle.Log4Net.csproj
-		SccProjectTopLevelParentUniqueName17 = InfinitySales.sln
-		SccProjectName17 = base/Abp.Castle.Log4Net
-		SccLocalPath17 = base\\Abp.Castle.Log4Net
-		SccProjectUniqueName18 = base\\Abp.AspNetCore\\Abp.AspNetCore.csproj
-		SccProjectTopLevelParentUniqueName18 = InfinitySales.sln
-		SccProjectName18 = base/Abp.AspNetCore
-		SccLocalPath18 = base\\Abp.AspNetCore
-		SccProjectUniqueName19 = base\\Abp.Web.Common\\Abp.Web.Common.csproj
-		SccProjectTopLevelParentUniqueName19 = InfinitySales.sln
-		SccProjectName19 = base/Abp.Web.Common
-		SccLocalPath19 = base\\Abp.Web.Common
-		SccProjectUniqueName20 = base\\Abp.AspNetCore.SignalR\\Abp.AspNetCore.SignalR.csproj
-		SccProjectTopLevelParentUniqueName20 = InfinitySales.sln
-		SccProjectName20 = base/Abp.AspNetCore.SignalR
-		SccLocalPath20 = base\\Abp.AspNetCore.SignalR
 	EndGlobalSection
 EndGlobal

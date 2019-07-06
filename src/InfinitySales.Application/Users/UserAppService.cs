@@ -17,11 +17,13 @@ using InfinitySales.Authorization.Users;
 using InfinitySales.Roles.Dto;
 using InfinitySales.Users.Dto;
 using System;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Data.ResponseModel;
 
 namespace InfinitySales.Users
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto,EditUserDto>, IUserAppService
+    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, EditUserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
@@ -65,6 +67,12 @@ namespace InfinitySales.Users
             return MapToEntityDto(user);
         }
 
+        public LoadResult GetAll(DataSourceLoadOptionsBase param)
+        {
+            var data = Repository.GetAllIncluding(x => x.Roles).Select(s => ObjectMapper.Map<UserDto>(s)).ToList();
+            return DataSourceLoader.Load(data, param);
+        }
+
         public override async Task<UserDto> Update(EditUserDto input)
         {
             CheckUpdatePermission();
@@ -72,7 +80,7 @@ namespace InfinitySales.Users
             var user = await _userManager.GetUserByIdAsync(input.Id);
 
             MapToEntity(input, user);
-            
+
             CheckErrors(await _userManager.UpdateAsync(user));
 
             if (input.RoleNames != null)

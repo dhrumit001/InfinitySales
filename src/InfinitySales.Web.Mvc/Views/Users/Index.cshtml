@@ -9,7 +9,7 @@
     <environment names="Development">
         <script>
             requirejs(['knockout','userIndex', 'addEditUserModel'], function (ko,userIndex, addEditUserModel) {
-                 ko.applyBindings(new addEditUserModel(@Html.Raw(Json.Serialize(Model.Roles))), $("#UserAddEditModal")[0]);
+                 @*ko.applyBindings(new addEditUserModel(@Html.Raw(Json.Serialize(Model.Roles))), $("#UserAddEditModal")[0]);*@
             })
         </script>
     </environment>
@@ -33,37 +33,8 @@
                 </ul>
             </div>
             <div class="body table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>@L("UserName")</th>
-                            <th>@L("FullName")</th>
-                            <th>@L("EmailAddress")</th>
-                            <th>@L("IsActive")</th>
-                            <th>@L("Actions")</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var user in Model.Users)
-                        {
-                            <tr>
-                                <td>@user.UserName</td>
-                                <td>@user.FullName</td>
-                                <td>@user.EmailAddress</td>
-                                <td><i class="material-icons" style="color:@(user.IsActive ? "green":"red");">@(user.IsActive ? "check_box" : "indeterminate_check_box")</i></td>
-                                <td class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">menu</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#" class="waves-effect waves-block edit-user" data-user-id="@user.Id" data-toggle="modal" data-target="#UserEditModal"><i class="material-icons">edit</i>@L("Edit")</a></li>
-                                        <li><a href="#" class="waves-effect waves-block delete-user" data-user-id="@user.Id" data-user-name="@user.UserName"><i class="material-icons">delete_sweep</i>@L("Delete")</a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                <div id="gridContainer"></div>
+                
                 <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right add-user" data-toggle="modal">
                     <i class="material-icons">add</i>
                 </button>

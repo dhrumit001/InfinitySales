@@ -1,9 +1,10 @@
-﻿define(['jquery','knockout'], function ($,ko) {
+﻿define(['jquery', 'knockout', 'dxaspnetdata', "jszip", "devextreme/ui/data_grid", "devextreme/integration/jquery"], function ($, ko, dxaspnetdata) {
 
 	var _userService = abp.services.app.user;
 	var _$modal = $('#UserCreateModal');
 	var _$form = _$modal.find('form');
 
+	initDataGrid();
 	$('#RefreshButton').click(function () {
 		refreshUserList();
 	});
@@ -49,4 +50,31 @@
 			}
 		);
 	}
+
+	function initDataGrid() {
+		$("#gridContainer").dxDataGrid({
+			dataSource: dxaspnetdata.createStore({
+				loadUrl: "/Users/List"
+			}),
+			remoteOperations: true,
+			columns: [{
+				dataField: "userName"
+			},
+			{
+				dataField: "fullName"
+			},
+			{
+				dataField: "emailAddress"
+			},
+			{
+				dataField: "isActive"
+			}],
+			scrolling: {
+				mode: "virtual"
+			},
+			showBorders: true
+		});
+
+	}
+
 });

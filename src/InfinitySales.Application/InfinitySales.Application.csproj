@@ -17,6 +17,9 @@
     <RootNamespace>InfinitySales</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.3.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\InfinitySales.Core\InfinitySales.Core.csproj" />
   </ItemGroup>
 </Project>

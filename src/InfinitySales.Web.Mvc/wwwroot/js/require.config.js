@@ -31,7 +31,9 @@ requirejs.config({
 		slimScroll: 'jquery-slimscroll/jquery.slimscroll',
 		waves: 'Waves/dist/waves',
 		push: 'push.js/push',
-		dxall: 'devextreme/js/dx.all',
+		jszip: "jszip/dist/jszip.min",
+		devextreme: "devextreme_amd",
+		dxaspnetdata: 'devextreme-aspnet-data/js/dx.aspnet.data',
 		signalr: 'signalr-client/signalr.min',
 
 		//abp global js
