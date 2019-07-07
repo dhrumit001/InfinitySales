@@ -19,6 +19,7 @@ using InfinitySales.Users.Dto;
 using System;
 using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Data.ResponseModel;
+using InfinitySales.Common.Services.Dto;
 
 namespace InfinitySales.Users
 {
@@ -89,6 +90,13 @@ namespace InfinitySales.Users
             }
 
             return await Get(input);
+        }
+
+        public async Task ChangeStatus(ChangeStatusDto<long> input)
+        {
+            var user = await _userManager.GetUserByIdAsync(input.Id);
+            
+            CheckErrors(await _userManager.ChangeStatusAsync(user,input.IsActive));
         }
 
         public override async Task Delete(EntityDto<long> input)

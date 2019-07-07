@@ -1,4 +1,4 @@
-﻿define(['jquery', 'knockout', 'dxaspnetdata', "jszip", "devextreme/ui/data_grid", "devextreme/integration/jquery"], function ($, ko, dxaspnetdata) {
+﻿define(['jquery', 'knockout', 'dxaspnetdata', "devextreme/ui/dialog", "jszip", "devextreme/ui/data_grid", "devextreme/integration/jquery"], function ($, ko, dxaspnetdata, dialog) {
 
 	var _userService = abp.services.app.user;
 	var _$modal = $('#UserCreateModal');
@@ -67,8 +67,43 @@
 				dataField: "emailAddress"
 			},
 			{
-				dataField: "isActive"
+				caption: "Active",
+				cellTemplate: function (container, options) {
+					var currentUserData = options.data;
+					$('<div />').dxButton(
+						{
+							icon: currentUserData.isActive ? "check" : "close",
+							text: currentUserData.isActive ? "Active" : "InActive",
+							type: currentUserData.isActive ? "success" : "danger",
+							onClick: function (args) {
+								var result = dialog.confirm("<i>Are you sure?</i>", (currentUserData.isActive ? "In activate " : "Activate ") + "user");
+								result.done(function (dialogResult) {
+									if (dialogResult) {
+										_userService.changeStatus({
+											id: currentUserData.id, isActive: !currentUserData.isActive
+										}).done(function () {
+											$("#gridContainer").dxDataGrid("instance").refresh();
+										});
+									}
+								});
+							}
+						}
+					).appendTo(container);
+				}
 			}],
+			masterDetail: {
+				enabled: true,
+				template: function (container, options) {
+					var currentUserData = options.data;
+
+					$("<div>").text("Surname :" + currentUserData.surname).appendTo(container);
+					$("<div>").text("Name :" + currentUserData.name).appendTo(container);
+					$("<div>").text("UserName :" + currentUserData.userName).appendTo(container);
+					$("<div>").text("Phone Number :" + (currentUserData.phoneNumber || " -")).appendTo(container);
+					$("<div>").text("Active :" + currentUserData.isActive).appendTo(container);
+					$("<div>").text("EmailConfirmed :" + currentUserData.isEmailConfirmed).appendTo(container);
+				}
+			},
 			scrolling: {
 				mode: "virtual"
 			},

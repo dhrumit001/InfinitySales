@@ -78,6 +78,20 @@ namespace InfinitySales.Authorization.Users
             return await base.DeleteAsync(user);
         }
 
+        public async Task<IdentityResult> ChangeStatusAsync(User user,bool isActive)
+        {
+            if (user.TenantId.HasValue)
+            {
+                if (await IsUserIsPrimaryUserAsync(user.TenantId.Value, user.Id))
+                {
+                    throw new UserFriendlyException(string.Format(L("CanNotChangeStatusOfPrimaryUser"), user.UserName));
+                }
+            }
+            user.IsActive = isActive;
+
+            return IdentityResult.Success;
+        }
+
         public async Task<bool> IsUserIsPrimaryUserAsync(int tenantId, long userId)
         {
             var tenant = await _tenantManager.GetByIdAsync(tenantId);

@@ -27,7 +27,12 @@ namespace InfinitySales.Users.Dto
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
 
+        [StringLength(AbpUserBase.MaxPhoneNumberLength)]
+        public virtual string PhoneNumber { get; set; }
+
         public bool IsActive { get; set; }
+
+        public bool IsEmailConfirmed { get; set; }
 
         public string FullName { get; set; }
 
